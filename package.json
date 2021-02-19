@@ -8,6 +8,8 @@
         "deploy:dev": "vercel",
         "deploy:prod": "vercel --prod",
         "develop": "vercel dev",
+        "format": "prettier --write **/*.ts",
+        "format:check": "prettier --check **/*.ts",
         "lint": "eslint --cache --fix --quiet --format codeframe --ext js,ts .",
         "reinstall": "del-cli ./node_modules ./package-lock.json ./yarn.lock",
         "postreinstall": "yarn setup",
@@ -19,7 +21,11 @@
     },
     "dependencies": {
         "isomorphic-unfetch": "^3.1.0",
-        "lodash": "^4.17.20"
+        "lodash": "^4.17.20",
+        "chrome-aws-lambda": "^3.0.4",
+        "formidable": "^1.2.2",
+        "puppeteer-core": "^3.0.4",
+        "querystring": "^0.2.0"
     },
     "devDependencies": {
         "@semantic-release/github": "^7.2.0",
@@ -27,7 +33,9 @@
         "@semantic-release/release-notes-generator": "^9.0.1",
         "@types/jest": "^26.0.20",
         "@types/lodash.mergewith": "^4.6.6",
+        "@types/formidable": "^1.0.31",
         "@types/prettier": "^2.1.5",
+        "@types/puppeteer-core": "^2.0.0",
         "@typescript-eslint/eslint-plugin": "^4.15.0",
         "@typescript-eslint/parser": "^4.15.0",
         "@vercel/node": "^1.9.0",
