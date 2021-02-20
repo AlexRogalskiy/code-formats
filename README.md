@@ -30,6 +30,19 @@
 ## _Table of contents_
 
 <!--ts-->
+   * [<em>Styled code formats</em>](#styled-code-formats)
+      * [<em>Table of contents</em>](#table-of-contents)
+      * [<em>Description</em>](#description)
+      * [<em>How to use</em>](#how-to-use)
+      * [<em>Example</em>](#example)
+      * [<em>Visitor stats</em>](#visitor-stats)
+      * [<em>Licensing</em>](#licensing)
+      * [<em>Authors</em>](#authors)
+      * [<em>Versioning</em>](#versioning)
+      * [<em>Contribution</em>](#contribution)
+      * [<em>Acknowledgement</em>](#acknowledgement)
+      * [<em>Forks</em>](#forks)
+      * [<em>Development Support</em>](#development-support)
 <!--te-->
 
 ## _Description_
