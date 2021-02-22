@@ -17,7 +17,9 @@
         "semantic-release": "semantic-release",
         "test": "TZ=utc jest",
         "test:coverage": "jest --collectCoverage",
-        "test:watch": "jest --watch"
+        "test:watch": "jest --watch",
+        "test:all": "npm run test",
+        "all": "npm run format && npm run lint"
     },
     "dependencies": {
         "isomorphic-unfetch": "^3.1.0",
@@ -69,6 +71,18 @@
         "vercel",
         "serverless functions",
         "typescript"
+    ],
+    "maintainers": [
+        {
+            "name": "Alexander Rogalskiy",
+            "email": "hi@nullables.io"
+        }
+    ],
+    "contributors": [
+        {
+            "name": "Alexander Rogalskiy",
+            "email": "hi@nullables.io"
+        }
     ],
     "release": {
         "tagFormat": "v${version}",
