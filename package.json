@@ -38,7 +38,7 @@
         "@types/formidable": "^1.0.31",
         "@types/prettier": "^2.1.5",
         "@types/puppeteer-core": "^2.0.0",
-        "@typescript-eslint/eslint-plugin": "^4.15.0",
+        "@typescript-eslint/eslint-plugin": "^4.15.2",
         "@typescript-eslint/parser": "^4.15.0",
         "@vercel/node": "^1.9.0",
         "del-cli": "3.0.0",
