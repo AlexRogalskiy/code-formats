@@ -8,7 +8,7 @@ import {
     ImageContent,
     ImageContentType,
     ImageEncoding,
-    ImageEncodingType
+    ImageEncodingType,
 } from '../typings/types'
 import { CONFIG } from '../utils/config'
 
