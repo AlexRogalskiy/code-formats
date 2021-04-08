@@ -9,6 +9,7 @@ import { sendResponse, setHeaders } from '../utils/requests'
 import { serialize } from '../utils/serializers'
 
 import { requestError, responseError } from '../errors/errors'
+import { single } from '../utils/commons'
 
 export async function fileController(req: NowRequest, res: NowResponse): Promise<void> {
     const form = new IncomingForm()
@@ -23,7 +24,7 @@ export async function fileController(req: NowRequest, res: NowResponse): Promise
             }
 
             if (files.data) {
-                readFile(files.data['path'], async (err, data) => {
+                readFile(single(files.data).path, async (err, data) => {
                     if (err) {
                         return sendResponse(res, responseError(err.message))
                     }

@@ -39,7 +39,7 @@ export const toBoolean = (value: any): boolean => {
     )
 }
 
-export const toString = (value: string | string[]): string => (_.isArray(value) ? value[0] : value)
+export const single = <T>(value: T | T[], index = 0): T => (_.isArray(value) ? value[index] : value)
 
 export const toInt = (str: string): number => {
     try {

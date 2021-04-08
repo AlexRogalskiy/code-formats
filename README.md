@@ -29,7 +29,7 @@
 [![Forks](https://img.shields.io/github/forks/alexrogalskiy/code-formats)](https://img.shields.io/github/forks/alexrogalskiy/code-formats)
 [![Stars](https://img.shields.io/github/stars/alexrogalskiy/code-formats)](https://img.shields.io/github/stars/alexrogalskiy/code-formats)
 ![code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ed7702f8cf28917829fa/maintainability)](https://codeclimate.com/github/AlexRogalskiy/code-formats/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/42630e4e5baaacfb9bd0/maintainability)](https://codeclimate.com/github/AlexRogalskiy/code-formats/maintainability)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/AlexRogalskiy/code-formats.svg?logo=lgtm\&logoWidth=18)](https://lgtm.com/projects/g/AlexRogalskiy/code-formats/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/AlexRogalskiy/code-formats.svg?logo=lgtm\&logoWidth=18)](https://lgtm.com/projects/g/AlexRogalskiy/code-formats/context:javascript)
 
@@ -38,9 +38,9 @@
 [![NewReleases](https://newreleases.io/badge.svg)](https://newreleases.io/github/AlexRogalskiy/code-formats)
 [![Hits-of-Code](https://hitsofcode.com/github/AlexRogalskiy/code-formats)](https://hitsofcode.com/github/AlexRogalskiy/code-formats/view)
 [![ComVer](https://img.shields.io/badge/ComVer-compliant-brightgreen.svg)][tags]
-![Website](https://img.shields.io/website?url=https://styled-code-formats.vercel.app/api?layout=churchill)
+![Website](https://img.shields.io/website?url=https://styled-code-formats.vercel.app/favicon.ico)
 
-[![codecov](https://codecov.io/gh/AlexRogalskiy/code-formats/branch/master/graph/badge.svg?token=F69zGy8tiW)](https://codecov.io/gh/AlexRogalskiy/code-formats)
+[![codecov](https://codecov.io/gh/AlexRogalskiy/code-formats/branch/master/graph/badge.svg?token=JDWQXAW6BU)](https://codecov.io/gh/AlexRogalskiy/code-formats)
 [![CI](https://github.com/AlexRogalskiy/code-formats/workflows/CI/badge.svg)](https://github.com/AlexRogalskiy/code-formats/actions/workflows/build.yml)
 [![GitHub Super-Linter](https://github.com/AlexRogalskiy/code-formats/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 [![BCH compliance](https://bettercodehub.com/edge/badge/AlexRogalskiy/code-formats?branch=master)](https://bettercodehub.com/)

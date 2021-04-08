@@ -3,13 +3,13 @@ import { ThemePattern } from '../../typings/enum-types'
 
 import * as webShotService from './webshot.service'
 
-import { mergeProps, toBoolean, toInt, toString } from '../utils/commons'
+import { mergeProps, toBoolean, toInt, single } from '../utils/commons'
 import { profile } from '../utils/profiles'
 
 import { ImageContent, ImageEncoding } from '../constants/constants'
 
 export async function templateRenderer(requestData: ParsedRequestData): Promise<Buffer | string | void> {
-    const theme = ThemePattern[toString(requestData.query.theme)]
+    const theme = ThemePattern[single(requestData.query.theme)]
     const format = requestData.query as Partial<FormatOptions>
     const data = requestData.data
 
@@ -21,13 +21,13 @@ export async function templateRenderer(requestData: ParsedRequestData): Promise<
 
     const url = webShotService.createTargetUrl(queryOptions)
 
-    const width = toInt(toString(requestData.query.width))
-    const height = toInt(toString(requestData.query.height))
+    const width = toInt(single(requestData.query.width))
+    const height = toInt(single(requestData.query.height))
 
-    const selector = toString(requestData.query.selector)
-    const fullPage = toBoolean(toString(requestData.query.fullPage))
-    const type = ImageContent[toString(requestData.query.type)]
-    const encoding = ImageEncoding[toString(requestData.query.encoding)]
+    const selector = single(requestData.query.selector)
+    const fullPage = toBoolean(single(requestData.query.fullPage))
+    const type = ImageContent[single(requestData.query.type)]
+    const encoding = ImageEncoding[single(requestData.query.encoding)]
 
     const routeOptions = { url }
     const imageOptions = { width, height }
