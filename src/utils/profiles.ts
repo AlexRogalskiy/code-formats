@@ -5,7 +5,7 @@ import { ProfileOptions } from '../../typings/domain-types'
 import { CONFIG } from '../configs/config'
 
 export const getProfileByEnv = (env: Optional<string> = process.env.NODE_ENV): Profile => {
-    return (env && Profile[env]) ?? Profile.dev
+    return env && Profile[env] ? Profile[env] : Profile.dev
 }
 
 export const getConfigByEnv = (env: Optional<string> = process.env.NODE_ENV): ProfileOptions => {
