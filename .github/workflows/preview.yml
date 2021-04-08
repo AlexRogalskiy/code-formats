@@ -57,4 +57,4 @@ jobs:
       - name: Test development server
         run: |
           curl --retry-connrefused --retry 5 http://localhost:3000/
-          curl --fail http://localhost:3000/api > /dev/null
+          curl --fail -d "data=Y29uc29sZS5sb2coImhlbGxvIHdvcmxkIik=" -X POST http://localhost:3000/api > /dev/null

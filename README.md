@@ -90,35 +90,78 @@ For the tech stack, ***Styled Code Formats*** using Typescript and serverless fu
 It's simple, you can copy paste this markdown content, like this one:
 
 ```
-![Styled Code Formats](https://styled-code-formats.vercel.app/api?backgroundColor=[value]&opacity=[value]&colorPattern=[value]&fontColor=[value]&pattern=[pattern]&category=[value]&width=[width]&height=[height])
+![Styled Code Formats](https://styled-code-formats.vercel.app/api?type=[value]&encoding=[value]&fullPage=[value]&width=[value]&height=[pattern]&selector=[value])
 ```
 
 There are several options you can use from the list:
 
-|  Options               | Description                            |   Type                     | Example       | Query Params                   |
-| ---------------------- | -------------------------------------- | -------------------------- | ------------- | ------------------------------ |
-| **\[Background Color]** | Background color for the quote image   | <code>Hex string</code>    | %23ffffff     | `?backgroundColor=[value]` |
-| **\[Opacity Pattern]**  | Background opacity of the pattern      | <code>Float</code>         | 0 - 1         | `&opacity=[value]`         |
-| **\[Color Pattern]**    | Color pattern for the signage          | <code>Hex string</code>    | %231abc9c     | `&colorPattern=[value]`    |
-| **\[Font Color]**       | Font color for the quote text          | <code>Hex string</code>    | %23000000     | `&fontColor=[value]`       |
-| **\[Pattern]**          | Pattern for the background             | <code>String</code>        | plus          | `&pattern=[value]`         |
-| **\[Category]**         | Quote category                         | <code>String</code>        | programming   | `&category=[value]`        |
-| **\[Width]**            | Quote image width                      | <code>String</code>        | 100%          | `&width=[value]`           |
-| **\[Height]**           | Quote image height                     | <code>String</code>        | 100%          | `&height=[value]`          |
+|  Options                | Description                            |   Type                     | Example       | Query Params            |
+| ----------------------- | -------------------------------------- | -------------------------- | ------------- | ----------------------- |
+| **\[Type]**             | Image type                             | <code>String</code>        | png/jpeg      | `?type=[value]`         |
+| **\[Encoding]**         | Image encoding                         | <code>String</code>        | base64/binary | `&encoding=[value]`     |
+| **\[FullPage]**         | Enable/disable full page view          | <code>Boolean</code>       | true          | `&fullPage=[value]`     |
+| **\[Width]**            | Screenshot image width                 | <code>String</code>        | 800px         | `&width=[value]`        |
+| **\[Height]**           | Screenshot image height                | <code>String</code>        | 800px         | `&height=[value]`       |
+| **\[Selector]**         | Html element selector                  | <code>String</code>        | #element      | `&selector=[value]`     |
 
 ## *Example*
 
 This is example of using ***Styled Code Formats***:
 
-```
-![Styled Code Formats](https://styled-code-formats.vercel.app/api?backgroundColor=%23FFFFFF&opacity=0.3&colorPattern=%23FFE0E9&fontColor=%230A83DC)
+- curl command:
+
+```shell script
+curl -d "data=Y29uc29sZS5sb2coImhlbGxvIHdvcmxkIik=" -X POST https://styled-code-formats.vercel.app/api?[params]
 ```
 
-Result:
+- NodeJS script:
 
-<div align="center" style="align-content: center">
-    <img width="100%" height="300px" style="min-height: 250px" src="https://styled-code-formats.vercel.app/api?backgroundColor=%23FFFFFF&opacity=0.3&colorPattern=%23FFE0E9&fontColor=%230A83DC" alt="Code Formats" />
-</div>
+```javascript
+import fs from "fs";
+import qs from "qs";
+import { post } from "request";
+import { promisify } from "util";
+
+const postAsync = promisify(post);
+const readFileAsync = promisify(fs.readFile);
+
+const getScreenshot = async () => {
+  const code = await readFileAsync("./sample.tsx");
+  const language = "tsx";
+
+  const params = {
+    backgroundColor: "#E6EDF8",
+    dropShadow: true,
+    dropShadowBlurRadius: "68px",
+    dropShadowOffsetY: "20px",
+    fontFamily: "Fira Code",
+    fontSize: "14px",
+    lineHeight: "133%",
+    lineNumbers: false,
+    paddingHorizontal: "35px",
+    paddingVertical: "49px",
+    squaredImage: false,
+    theme: "nord",
+    widthAdjustment: true,
+    language,
+  };
+
+  try {
+    const { body } = await postAsync({
+      url: `https://styled-code-formats.vercel.app/api?${qs.stringify(params)}`,
+      formData: {
+        data: code.toString("base64"),
+      },
+    });
+
+    console.log(body);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+getScreenshot();
+```
 
 ## *Visitor stats*
 
