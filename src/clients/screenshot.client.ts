@@ -1,9 +1,10 @@
 import { ImageOptions, PageOptions, ParsedRequest, ResourceOptions } from '../../typings/browser-types'
 
-import { getSession, profile } from '../utils/profiles'
+import { profile } from '../utils/profiles'
 import { mergeProps } from '../utils/commons'
 import { boxenLogs } from '../utils/loggers'
 import { serialize } from '../utils/serializers'
+import { createBrowserSession } from '../utils/sessions'
 
 const createScreenshot = async (parsedRequest: Required<ParsedRequest>): Promise<Buffer | string | void> => {
     boxenLogs(`>>> Generating screenshot with parameters: ${serialize(parsedRequest)}`)
@@ -16,7 +17,7 @@ const getSessionScreenshot = async (
 ): Promise<Buffer | string | void> => {
     const { routeOptions, imageOptions, resourceOptions, pageOptions } = parsedRequest
 
-    const session = await getSession()
+    const session = await createBrowserSession()
 
     try {
         await session.setup()

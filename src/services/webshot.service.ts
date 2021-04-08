@@ -66,7 +66,7 @@ export function createTargetUrl(query: QueryOptions): string {
 }
 
 export async function getScreenshot(parsedRequest: ParsedRequest): Promise<Buffer | string | void> {
-    boxenLogs(`Creating screenshot by params=${serialize(parsedRequest)}`)
+    boxenLogs(`Creating screenshot by request params=${serialize(parsedRequest)}`)
 
-    return screenshotClient.screenshotRenderer(parsedRequest)
+    return await screenshotClient.screenshotRenderer(parsedRequest)
 }

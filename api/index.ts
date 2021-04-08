@@ -5,6 +5,7 @@ import { RoutePattern } from '../typings/enum-types'
 import { getRoute } from '../src/routes/routes'
 import { single } from '../src/utils/commons'
 import { sendResponse } from '../src/utils/requests'
+
 import { responseError } from '../src/errors/errors'
 
 export default async function render(req: NowRequest, res: NowResponse): Promise<NowResponse | void> {

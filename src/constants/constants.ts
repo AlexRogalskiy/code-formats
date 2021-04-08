@@ -5,17 +5,17 @@ import { ChromeArgOptions, LaunchOptions } from 'puppeteer-core'
 import { Headers, RouteOptions, ThemeFormatOptions } from '../../typings/domain-types'
 import { ImageOptions, LocationOptions, PageOptions, ResourceOptions } from '../../typings/browser-types'
 
-import { strToEnum } from '../utils/commons'
+import { toEnum } from '../utils/commons'
 
 /**
  * Image supported content types
  */
-export const ImageContent = strToEnum(['jpeg', 'png'])
+export const ImageContent = toEnum(['jpeg', 'png'])
 
 /**
  * Image supported encoding types
  */
-export const ImageEncoding = strToEnum(['base64', 'binary'])
+export const ImageEncoding = toEnum(['base64', 'binary'])
 
 /**
  * Output configuration options
@@ -81,15 +81,13 @@ export const BROWSER_OPTIONS: Readonly<LaunchOptions & ChromeArgOptions> = {
     headless: true,
     devtools: false,
     args: [
-        '--hide-scrollbars',
-        '--disable-web-security',
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
         '--headless',
+        '--no-sandbox',
         '--disable-gpu',
-        '--disable-dev-shm-usage',
         '--hide-scrollbars',
         '--disable-web-security',
+        '--disable-dev-shm-usage',
+        '--disable-setuid-sandbox',
     ],
     ignoreDefaultArgs: ['--disable-extensions'],
 }

@@ -62,6 +62,9 @@
 - [*Contribution*](#contribution)
 - [*Acknowledgement*](#acknowledgement)
 - [*Forks*](#forks)
+- [*Issues*](#issues)
+- [*Team Tools*](#team-tools)
+- [*OpenGraph Card*](#opengraph-card)
 - [*Development Support*](#development-support)
 
 ## *Description*
@@ -123,18 +126,19 @@ curl -d "data=Y29uc29sZS5sb2coImhlbGxvIHdvcmxkIik=" -X POST https://styled-code-
 - NodeJS script:
 
 ```typescript
-import { readFile } from 'fs'
+import { readFile, writeFile } from 'fs'
 import { stringify } from 'querystring'
 
-import * as fetchImport from 'isomorphic-unfetch'
+import * as fetchImport from 'node-fetch'
 
 import { promisify } from 'util'
 
 const fetch = fetchImport.default || fetchImport
 const readFileAsync = promisify(readFile)
+const writeFileAsync = promisify(writeFile)
 
 const getScreenshot = async (): Promise<void> => {
-    const code = await readFileAsync('./examples/screenshot.ts')
+    const code = await readFileAsync('./typings/form-data/form-data.d.ts')
 
     const language = 'ts'
 
@@ -155,21 +159,30 @@ const getScreenshot = async (): Promise<void> => {
         language,
     }
 
+    const data = `data=${code.toString('base64')}`
+
     try {
-        const option = {
+        const options = {
             method: 'POST',
-            body: code.toString('base64'),
+            mode: 'cors',
+            cache: 'no-cache',
+            referrerPolicy: 'no-referrer',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: data,
         }
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         const response = await fetch(
             `https://styled-code-formats.vercel.app/api?${stringify(params)}`,
-            option
+            options
         )
 
         if (response.status === 200) {
-            console.log(response)
+            const text = await response.text()
+            const imageData = `data:image/png;base64,${text.replaceAll('"', '')}`
+
+            await writeFileAsync('./data/image.txt', imageData)
         } else {
             console.error(response)
         }
@@ -230,6 +243,26 @@ See also the list of [contributors][contributors] who participated in this proje
 ## *Forks*
 
 [![Forkers repo roster for @AlexRogalskiy/code-formats](https://reporoster.com/forks/AlexRogalskiy/code-formats)][forkers]
+
+## *Issues*
+
+[![issuehunt-to-marktext](https://issuehunt.io/static/embed/issuehunt-button-v1.svg)](https://issuehunt.io/r/AlexRogalskiy/code-formats)
+
+## *Team Tools*
+
+[![alt tag](http://pylonsproject.org/img/logo-jetbrains.png)](https://www.jetbrains.com/)
+
+***Styled Code Formats*** Team would like inform that JetBrains is helping by provided IDE to develop the application. Thanks to its support program for an Open Source projects!
+
+[![Edit with Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/AlexRogalskiy/code-formats)
+
+***Styled Code Formats*** has experimental support for Gitpod, a pre-configured development environment that runs in your browser. To use Gitpod, click the button below and sign in with GitHub. Gitpod also offers a browser add-on, though it is not required.
+
+## *OpenGraph Card*
+
+<p align="center" style="text-align:center;">
+    <img alt="OpenGraph card" src="https://raw.githubusercontent.com/AlexRogalskiy/code-formats/master/images/opengraph-card.png"/>
+</p>
 
 ## *Development Support*
 

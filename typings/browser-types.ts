@@ -206,18 +206,18 @@ export type ParsedRequest = {
     /**
      * Parsed image url.
      */
-    routeOptions: RouteOptions
+    readonly routeOptions: RouteOptions
     /**
      * Parsed image options.
      */
-    imageOptions?: ImageOptions
+    readonly imageOptions?: ImageOptions
     /**
      * Parsed resource options.
      */
-    resourceOptions?: ResourceOptions
+    readonly resourceOptions?: ResourceOptions
     /**
      * Parsed page options.
      */
-    pageOptions?: PageOptions
+    readonly pageOptions?: PageOptions
 }
 //--------------------------------------------------------------------------------------------------

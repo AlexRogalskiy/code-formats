@@ -8,7 +8,7 @@
     "scripts": {
         "deploy:dev": "env-cmd --silent -e prod vercel",
         "deploy:prod": "env-cmd --silent -e prod vercel --prod",
-        "start": "env-cmd --silent -e dev vercel dev",
+        "develop": "env-cmd --silent -e dev vercel dev",
         "format": "prettier --single-quote --write **/*.ts",
         "format:check": "prettier --check **/*.ts",
         "lint": "eslint --cache --fix --quiet --cache-location ./node_modules/.cache/ --format codeframe --ext js,ts .",
@@ -61,7 +61,6 @@
         "@types/formidable": "^1.0.31",
         "@types/jest": "^26.0.20",
         "@types/lodash.mergewith": "^4.6.6",
-        "@types/lunr": "^2.3.3",
         "@types/node-fetch": "^2.5.10",
         "@types/prettier": "^2.1.5",
         "@typescript-eslint/eslint-plugin": "^4.15.0",
