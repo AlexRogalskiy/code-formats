@@ -16,11 +16,11 @@
 ![GitHub Repository dependents](https://badgen.net/github/dependents-repo/AlexRogalskiy/code-formats)
 
 [![DeepSource](https://deepsource.io/gh/AlexRogalskiy/code-formats.svg/?label=active+issues\&show_trend=true)](https://deepsource.io/gh/AlexRogalskiy/code-formats/?ref=repository-badge)
-[![DeepScan grade](https://deepscan.io/api/teams/11946/projects/16317/branches/347287/badge/grade.svg)](https://deepscan.io/dashboard#view=project\&tid=11946\&pid=16317\&bid=347287)
+[![DeepScan grade](https://deepscan.io/api/teams/11946/projects/16612/branches/359964/badge/grade.svg)](https://deepscan.io/dashboard#view=project\&tid=11946\&pid=16612\&bid=359964)
 [![Tokei](https://tokei.rs/b1/github/AlexRogalskiy/code-formats?category=lines)](https://github.com/XAMPPRocky/tokei)
 ![Mergify Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/AlexRogalskiy/code-formats)
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
-[![DOI](https://zenodo.org/badge/334777292.svg)](https://zenodo.org/badge/latestdoi/334777292)
+[![DOI](https://zenodo.org/badge/340043450.svg)](https://zenodo.org/badge/latestdoi/340043450)
 [![dependencies Status](https://status.david-dm.org/gh/AlexRogalskiy/code-formats.svg)](https://david-dm.org/AlexRogalskiy/code-formats)
 [![devDependencies Status](https://status.david-dm.org/gh/AlexRogalskiy/code-formats.svg)](https://david-dm.org/AlexRogalskiy/code-formats?type=dev)
 
