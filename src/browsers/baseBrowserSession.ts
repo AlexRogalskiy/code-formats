@@ -51,6 +51,7 @@ export default abstract class BaseBrowserSession {
         await page.setViewport(imageOptions)
         await page.goto(url, pageOptions)
 
+        // await page.evaluate(() => document.querySelector(resourceOptions.selector))
         const exportContainer = await page.waitForSelector(resourceOptions.selector)
 
         if (!exportContainer) {

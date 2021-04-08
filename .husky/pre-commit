@@ -1,6 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+git status --porcelain
+
 npm run all
 npm run test:all
 npm run changelog

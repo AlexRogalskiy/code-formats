@@ -1,15 +1,17 @@
-import { readFile } from 'fs'
+import { readFile, writeFile } from 'fs'
 import { stringify } from 'querystring'
+import FormData from 'form-data'
 
-import * as fetchImport from 'isomorphic-unfetch'
+import * as fetchImport from 'node-fetch'
 
 import { promisify } from 'util'
 
 const fetch = fetchImport.default || fetchImport
 const readFileAsync = promisify(readFile)
+const writeFileAsync = promisify(writeFile)
 
 const getScreenshot = async (): Promise<void> => {
-    const code = await readFileAsync('./src/screenshot.ts')
+    const code = await readFileAsync('./typings/form-data/form-data.d.ts')
 
     const language = 'ts'
 
@@ -30,21 +32,35 @@ const getScreenshot = async (): Promise<void> => {
         language,
     }
 
+    const formData = new FormData()
+    formData.append('data', Buffer.from('console.log(4)').toString('base64'))
+    formData.append('data', code.toString('base64'))
+
+    // const data = `data=${Buffer.from('console.log(4)').toString('base64')}`
+    const data = `data=${code.toString('base64')}`
+
     try {
-        const option = {
+        const options = {
             method: 'POST',
-            body: code.toString('base64'),
+            mode: 'cors',
+            cache: 'no-cache',
+            referrerPolicy: 'no-referrer',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: data,
         }
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         const response = await fetch(
             `https://styled-code-formats.vercel.app/api?${stringify(params)}`,
-            option
+            options
         )
 
         if (response.status === 200) {
-            console.log(response)
+            const text = await response.text()
+            const imageData = `data:image/png;base64,${text.replaceAll('"', '')}`
+
+            await writeFileAsync('./data/image.txt', imageData)
         } else {
             console.error(response)
         }

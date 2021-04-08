@@ -38,7 +38,7 @@ export const LAUNCH_OPTIONS: Readonly<LaunchOptions> = {
  * Page configuration options
  */
 export const PAGE_OPTIONS: Readonly<PageOptions> = {
-    waitUntil: 'domcontentloaded',
+    waitUntil: 'load',
 }
 
 /**
