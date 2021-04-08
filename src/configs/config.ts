@@ -7,7 +7,6 @@ import {
     LOCATION_OPTIONS,
     OUTPUT_OPTIONS,
     PAGE_OPTIONS,
-    QUERY_OPTIONS,
     RESOURCE_OPTIONS,
     ROUTE_OPTIONS,
 } from '../constants/constants'
@@ -31,7 +30,6 @@ export const CONFIG: Readonly<ConfigRecord> = {
             imageOptions: IMAGE_OPTIONS,
             pageOptions: PAGE_OPTIONS,
         },
-        queryOptions: QUERY_OPTIONS,
         outputOptions: OUTPUT_OPTIONS,
     },
     prod: {
@@ -43,7 +41,6 @@ export const CONFIG: Readonly<ConfigRecord> = {
             imageOptions: IMAGE_OPTIONS,
             pageOptions: PAGE_OPTIONS,
         },
-        queryOptions: QUERY_OPTIONS,
         outputOptions: OUTPUT_OPTIONS,
     },
     test: {
@@ -55,7 +52,6 @@ export const CONFIG: Readonly<ConfigRecord> = {
             imageOptions: IMAGE_OPTIONS,
             pageOptions: PAGE_OPTIONS,
         },
-        queryOptions: QUERY_OPTIONS,
         outputOptions: OUTPUT_OPTIONS,
     },
 }

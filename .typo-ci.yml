@@ -20,6 +20,7 @@ dictionaries:
 # Any files/folders we should ignore?
 excluded_files:
   - "vendor/**/*"
+  - "samples/**/*"
   - "node_modules/**/*"
   - "*.key"
   - "*.enc"

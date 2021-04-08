@@ -2,7 +2,7 @@ import boxen from 'boxen'
 
 import { ChromeArgOptions, LaunchOptions } from 'puppeteer-core'
 
-import { Headers, CarbonFormatOptions, QueryFormatOptions, RouteOptions } from '../../typings/domain-types'
+import { Headers, RouteOptions, ThemeFormatOptions } from '../../typings/domain-types'
 import { ImageOptions, LocationOptions, PageOptions, ResourceOptions } from '../../typings/browser-types'
 
 import { strToEnum } from '../utils/commons'
@@ -95,33 +95,9 @@ export const BROWSER_OPTIONS: Readonly<LaunchOptions & ChromeArgOptions> = {
 }
 
 /**
- * Carbon format configuration options
- */
-export const QUERY_OPTIONS: Readonly<CarbonFormatOptions> = {
-    bg: '#FFFFFF',
-    ds: false,
-    dsblur: '50px',
-    dsyoff: '20px',
-    es: '2x',
-    fm: 'Fira Code',
-    fs: '18px',
-    l: 'auto',
-    lh: '110%',
-    ln: false,
-    pv: '0',
-    ph: '0',
-    t: 'material',
-    si: false,
-    wa: true,
-    wc: true,
-    wt: 'none',
-    wm: false,
-}
-
-/**
  * Query format configuration mappings
  */
-export const QUERY_FORMAT_MAPPINGS: Readonly<QueryFormatOptions> = {
+export const QUERY_FORMAT_MAPPINGS: Readonly<ThemeFormatOptions> = {
     backgroundColor: 'bg',
     dropShadow: 'ds',
     dropShadowBlur: 'dsblur',

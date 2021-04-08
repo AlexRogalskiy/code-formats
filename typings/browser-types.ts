@@ -3,6 +3,10 @@ import { LaunchOptions as PlayLaunchOptions } from 'playwright-chromium'
 
 import { ImageContent, ImageEncoding } from '../src/constants/constants'
 
+import { Optional } from './standard-types'
+import { ThemePattern } from './enum-types'
+import { RouteOptions } from './domain-types'
+
 //--------------------------------------------------------------------------------------------------
 /**
  * ImageContentType
@@ -155,6 +159,17 @@ export type ScreenshotOptions = {
  * ResourceOptions
  * @desc Type representing resource options
  */
+export type ThemeOptions = {
+    /**
+     * Page theme
+     */
+    readonly theme: Optional<ThemePattern>
+}
+//--------------------------------------------------------------------------------------------------
+/**
+ * ResourceOptions
+ * @desc Type representing resource options
+ */
 export type ResourceOptions = {
     /**
      * Enable/disable full page view port for screenshot.
@@ -183,11 +198,15 @@ export type ResourceOptions = {
 }
 
 //--------------------------------------------------------------------------------------------------
+/**
+ * ParsedRequest
+ * @desc Type representing parsed request
+ */
 export type ParsedRequest = {
     /**
      * Parsed image url.
      */
-    url: string
+    routeOptions: RouteOptions
     /**
      * Parsed image options.
      */

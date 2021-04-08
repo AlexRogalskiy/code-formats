@@ -2,6 +2,7 @@
     "name": "styled-code-formats",
     "version": "0.0.0-dev",
     "description": "Automatically generate styled formatted code (png, jpeg) upon request",
+    "type": "module",
     "main": "api/index.ts",
     "license": "GPL-3.0",
     "scripts": {
@@ -13,6 +14,7 @@
         "lint": "eslint --cache --fix --quiet --cache-location ./node_modules/.cache/ --format codeframe --ext js,ts .",
         "lint:clean": "del-cli .eslintcache",
         "lint:json": "node_modules/.bin/jsonlint ./package.json --quiet",
+        "sample": "cd samples && tsc && node ./dist/screenshot.js",
         "pretty": "pretty-quick --staged --pattern '!test/tests/lint/**'",
         "license": "license-checker --json > licenses.json",
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",

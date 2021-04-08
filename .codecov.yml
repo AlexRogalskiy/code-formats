@@ -46,6 +46,7 @@ coverage:
     - "docs"
     - "scripts"
     - "tests"
+    - "samples"
 
 flags:
   src:

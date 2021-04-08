@@ -1,70 +1,14 @@
 import boxen from 'boxen'
 
-import { Optional } from './standard-types'
 import { ScreenshotOptions } from './browser-types'
+import { ThemePattern } from './enum-types'
+import { Optional } from './standard-types'
 //--------------------------------------------------------------------------------------------------
 /**
  * Headers
  * @desc Type representing headers
  */
 export type Headers = Record<string, number | string | string[]>
-//--------------------------------------------------------------------------------------------------
-/**
- * FontOptions
- * @desc Type representing font options
- */
-export type FontOptions = {
-    /**
-     * Font family
-     */
-    readonly fontFamily: string
-    /**
-     * Font data
-     */
-    readonly fontSrc: string
-}
-//--------------------------------------------------------------------------------------------------
-/**
- * ThemeOptions
- * @desc Type representing theme options
- */
-export type ThemeOptions = {
-    /**
-     * Theme quote text color
-     */
-    readonly quoteColor?: string
-    /**
-     * Theme author text color
-     */
-    readonly authorColor?: string
-    /**
-     * Theme background color
-     */
-    readonly bgColor?: string
-    /**
-     * Theme color pattern
-     */
-    readonly colorPattern?: string
-    /**
-     * Theme background opacity
-     */
-    readonly opacity?: Optional<number>
-}
-//--------------------------------------------------------------------------------------------------
-/**
- * StyleOptions
- * @desc Type representing style options
- */
-export type StyleOptions = {
-    /**
-     * Style font options
-     */
-    readonly font: FontOptions
-    /**
-     * Style theme options
-     */
-    readonly theme: ThemeOptions
-}
 
 //--------------------------------------------------------------------------------------------------
 /**
@@ -76,18 +20,39 @@ export interface RouteOptions {
      * Route base url.
      */
     readonly url: string
-    /**
-     * Route format options.
-     */
-    readonly options?: FormatOptions
 }
 
-//--------------------------------------------------------------------------------------------------
+/**
+ * ThemeOptions
+ * @desc Type representing theme options
+ */
+export interface ThemeOptions {
+    /**
+     * Theme pattern.
+     */
+    readonly theme?: Optional<ThemePattern>
+    /**
+     * Theme format options.
+     */
+    readonly format?: FormatOptions
+}
+
+/**
+ * PayloadOptions
+ * @desc Type representing payload options
+ */
+export interface PayloadOptions {
+    /**
+     * Payload data
+     */
+    readonly data: string
+}
+
 /**
  * QueryOptions
  * @desc Type representing query options
  */
-export type QueryOptions = RouteOptions & { readonly data: string }
+export type QueryOptions = RouteOptions & ThemeOptions & PayloadOptions
 //--------------------------------------------------------------------------------------------------
 /**
  * CarbonFormatOptions
@@ -175,10 +140,10 @@ export type FormatOptions = {
 }
 //--------------------------------------------------------------------------------------------------
 /**
- * QueryFormatOptions
- * @desc Type representing query format options
+ * ThemeFormatOptions
+ * @desc Type representing theme format options
  */
-export type QueryFormatOptions = Record<keyof FormatOptions, keyof CarbonFormatOptions>
+export type ThemeFormatOptions = Record<keyof FormatOptions, keyof CarbonFormatOptions>
 
 //--------------------------------------------------------------------------------------------------
 /**
@@ -191,19 +156,11 @@ export type ProfileOptions = {
      */
     readonly routeOptions: Partial<RouteOptions>
     /**
-     * Query configuration options.
-     */
-    readonly queryOptions: Partial<QueryOptions>
-    /**
      * Screenshot configuration options.
      */
     readonly screenshotOptions: Partial<ScreenshotOptions>
     /**
-     * Style configuration options.
-     */
-    readonly styleOptions?: Partial<StyleOptions>
-    /**
-     * Output options
+     * Logging options
      */
     readonly outputOptions?: Partial<boxen.Options>
 }

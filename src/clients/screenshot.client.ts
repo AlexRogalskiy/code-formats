@@ -14,14 +14,14 @@ const createScreenshot = async (parsedRequest: Required<ParsedRequest>): Promise
 const getSessionScreenshot = async (
     parsedRequest: Required<ParsedRequest>
 ): Promise<Buffer | string | void> => {
-    const { url, imageOptions, resourceOptions, pageOptions } = parsedRequest
+    const { routeOptions, imageOptions, resourceOptions, pageOptions } = parsedRequest
 
     const session = await getSession()
 
     try {
         await session.setup()
 
-        return await session.createScreenshot(url, imageOptions, resourceOptions, pageOptions)
+        return await session.createScreenshot(routeOptions.url, imageOptions, resourceOptions, pageOptions)
     } finally {
         await session.teardown()
     }
@@ -31,7 +31,7 @@ export async function screenshotRenderer(parsedRequest: ParsedRequest): Promise<
     const { imageOptions, resourceOptions, pageOptions } = profile.screenshotOptions
 
     const request: Required<ParsedRequest> = {
-        url: parsedRequest.url,
+        routeOptions: parsedRequest.routeOptions,
         imageOptions: mergeProps<ImageOptions>(imageOptions, parsedRequest.imageOptions),
         resourceOptions: mergeProps<ResourceOptions>(resourceOptions, parsedRequest.resourceOptions),
         pageOptions: mergeProps<PageOptions>(pageOptions, parsedRequest.pageOptions),

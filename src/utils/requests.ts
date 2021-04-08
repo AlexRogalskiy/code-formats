@@ -46,7 +46,7 @@ export const isResponseOk = (response: Response): boolean => {
     return (statusCode >= 200 && statusCode <= limitStatusCode) || statusCode === 304
 }
 
-const checkStatus = async (response: Response): Promise<Response> => {
+export const checkStatus = async (response: Response): Promise<Response> => {
     if (isResponseOk(response)) {
         return response
     }

@@ -1,48 +1,52 @@
 import { stringify } from 'querystring'
 
+import { Optional } from '../../typings/standard-types'
 import { ParsedRequest } from '../../typings/browser-types'
 import { CarbonFormatOptions, FormatOptions, QueryOptions } from '../../typings/domain-types'
 
 import * as screenshotClient from '../clients/screenshot.client'
 
-import { QUERY_FORMAT_MAPPINGS, QUERY_OPTIONS } from '../constants/constants'
+import { QUERY_FORMAT_MAPPINGS } from '../constants/constants'
 
 import { boxenLogs } from '../utils/loggers'
 import { mergeProps } from '../utils/commons'
 import { serialize } from '../utils/serializers'
 import { getApiUrl } from '../utils/requests'
 
-const toQueryParams = (options: Partial<FormatOptions>): Partial<CarbonFormatOptions> => {
-    return (
-        options &&
-        Object.keys(options).reduce((acc, curr) => {
-            /**
-             * Go through the options and map them with their corresponding
-             * carbon query param key.
-             */
-            const carbonConfigKey = QUERY_FORMAT_MAPPINGS[curr as keyof FormatOptions]
-            if (!carbonConfigKey) {
-                return acc
-            }
+import { getTheme } from '../themes/themes'
 
-            /**
-             * Assign the value of the option to the corresponding
-             * carbon query param key
-             */
-            return {
-                ...acc,
-                [carbonConfigKey]: options[curr as keyof FormatOptions],
-            }
-        }, {})
-    )
+const buildQueryParams = (options: Partial<FormatOptions>): Partial<CarbonFormatOptions> => {
+    return Object.keys(options).reduce((acc, curr) => {
+        /**
+         * Go through the options and map them with their corresponding
+         * carbon query param key.
+         */
+        const carbonConfigKey = QUERY_FORMAT_MAPPINGS[curr as keyof FormatOptions]
+        if (!carbonConfigKey) {
+            return acc
+        }
+
+        /**
+         * Assign the value of the option to the corresponding
+         * carbon query param key
+         */
+        return {
+            ...acc,
+            [carbonConfigKey]: options[curr as keyof FormatOptions],
+        }
+    }, {})
 }
 
-export function createTargetUrl(query: Required<QueryOptions>): string {
+const toQueryParams = (options: Optional<Partial<FormatOptions>>): Partial<CarbonFormatOptions> => {
+    return options ? buildQueryParams(options) : {}
+}
+
+export function createTargetUrl(query: QueryOptions): string {
     /**
      * Merge the default query params with the ones that we got
      * from the options object.
      */
-    const queryParams = mergeProps<CarbonFormatOptions>(QUERY_OPTIONS, toQueryParams(query.options))
+    const queryParams = mergeProps<CarbonFormatOptions>(getTheme(query.theme), toQueryParams(query.format))
 
     /**
      * Make the code string url safe

@@ -43,7 +43,6 @@
 [![codecov](https://codecov.io/gh/AlexRogalskiy/code-formats/branch/master/graph/badge.svg?token=F69zGy8tiW)](https://codecov.io/gh/AlexRogalskiy/code-formats)
 [![CI](https://github.com/AlexRogalskiy/code-formats/workflows/CI/badge.svg)](https://github.com/AlexRogalskiy/code-formats/actions/workflows/build.yml)
 [![GitHub Super-Linter](https://github.com/AlexRogalskiy/code-formats/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
-[![GitHub JSON-Validator](https://github.com/AlexRogalskiy/code-formats/workflows/Validate%20JSONs/badge.svg)](https://github.com/OrRosenblatt/validate-json-action)
 [![BCH compliance](https://bettercodehub.com/edge/badge/AlexRogalskiy/code-formats?branch=master)](https://bettercodehub.com/)
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/AlexRogalskiy/code-formats)
@@ -90,19 +89,26 @@ For the tech stack, ***Styled Code Formats*** using Typescript and serverless fu
 It's simple, you can copy paste this markdown content, like this one:
 
 ```
-![Styled Code Formats](https://styled-code-formats.vercel.app/api?type=[value]&encoding=[value]&fullPage=[value]&width=[value]&height=[pattern]&selector=[value])
+![Styled Code Formats](https://styled-code-formats.vercel.app/api?theme=[value]&type=[value]&encoding=[value]&fullPage=[value]&width=[value]&height=[pattern]&selector=[value])
 ```
 
 There are several options you can use from the list:
 
 |  Options                | Description                            |   Type                     | Example       | Query Params            |
 | ----------------------- | -------------------------------------- | -------------------------- | ------------- | ----------------------- |
-| **\[Type]**             | Image type                             | <code>String</code>        | png/jpeg      | `?type=[value]`         |
+| **\[Theme]**            | Screenshot theme                       | <code>String</code>        | default       | `?theme=[value]`        |
+| **\[Type]**             | Image type                             | <code>String</code>        | png/jpeg      | `&type=[value]`         |
 | **\[Encoding]**         | Image encoding                         | <code>String</code>        | base64/binary | `&encoding=[value]`     |
 | **\[FullPage]**         | Enable/disable full page view          | <code>Boolean</code>       | true          | `&fullPage=[value]`     |
 | **\[Width]**            | Screenshot image width                 | <code>String</code>        | 800px         | `&width=[value]`        |
 | **\[Height]**           | Screenshot image height                | <code>String</code>        | 800px         | `&height=[value]`       |
 | **\[Selector]**         | Html element selector                  | <code>String</code>        | #element      | `&selector=[value]`     |
+
+Here is a list of supported screenshot themes:
+
+| **Name**                          | **Value**                     |
+| --------------------------------- | ----------------------------- |
+| **Default**                       | default                       |
 
 ## *Example*
 
@@ -116,51 +122,63 @@ curl -d "data=Y29uc29sZS5sb2coImhlbGxvIHdvcmxkIik=" -X POST https://styled-code-
 
 - NodeJS script:
 
-```javascript
-import fs from "fs";
-import qs from "qs";
-import { post } from "request";
-import { promisify } from "util";
+```typescript
+import { readFile } from 'fs'
+import { stringify } from 'querystring'
 
-const postAsync = promisify(post);
-const readFileAsync = promisify(fs.readFile);
+import * as fetchImport from 'isomorphic-unfetch'
 
-const getScreenshot = async () => {
-  const code = await readFileAsync("./sample.tsx");
-  const language = "tsx";
+import { promisify } from 'util'
 
-  const params = {
-    backgroundColor: "#E6EDF8",
-    dropShadow: true,
-    dropShadowBlurRadius: "68px",
-    dropShadowOffsetY: "20px",
-    fontFamily: "Fira Code",
-    fontSize: "14px",
-    lineHeight: "133%",
-    lineNumbers: false,
-    paddingHorizontal: "35px",
-    paddingVertical: "49px",
-    squaredImage: false,
-    theme: "nord",
-    widthAdjustment: true,
-    language,
-  };
+const fetch = fetchImport.default || fetchImport
+const readFileAsync = promisify(readFile)
 
-  try {
-    const { body } = await postAsync({
-      url: `https://styled-code-formats.vercel.app/api?${qs.stringify(params)}`,
-      formData: {
-        data: code.toString("base64"),
-      },
-    });
+const getScreenshot = async (): Promise<void> => {
+    const code = await readFileAsync('./examples/screenshot.ts')
 
-    console.log(body);
-  } catch (e) {
-    console.error(e);
-  }
-};
+    const language = 'ts'
 
-getScreenshot();
+    const params = {
+        backgroundColor: '#E6EDF8',
+        dropShadow: true,
+        dropShadowBlurRadius: '68px',
+        dropShadowOffsetY: '20px',
+        fontFamily: 'Fira Code',
+        fontSize: '14px',
+        lineHeight: '133%',
+        lineNumbers: false,
+        paddingHorizontal: '35px',
+        paddingVertical: '49px',
+        squaredImage: false,
+        theme: 'nord',
+        widthAdjustment: true,
+        language,
+    }
+
+    try {
+        const option = {
+            method: 'POST',
+            body: code.toString('base64'),
+        }
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const response = await fetch(
+            `https://styled-code-formats.vercel.app/api?${stringify(params)}`,
+            option
+        )
+
+        if (response.status === 200) {
+            console.log(response)
+        } else {
+            console.error(response)
+        }
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+void getScreenshot()
 ```
 
 ## *Visitor stats*
