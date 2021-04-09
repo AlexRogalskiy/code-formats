@@ -1,6 +1,11 @@
 import { Browser, Page } from 'puppeteer'
 
-import { ChromeBrowserOptions, ImageOptions, PageOptions, ResourceOptions } from '../../typings/browser-types'
+import {
+    ChromeBrowserOptions,
+    ImageOptions,
+    PuppeteerPageOptions,
+    ResourceOptions,
+} from '../../typings/browser-types'
 
 import { profile } from '../utils/profiles'
 import { logs } from '../utils/loggers'
@@ -50,7 +55,7 @@ export default class BrowserSession {
         url: string,
         imageOptions: ImageOptions,
         resourceOptions: ResourceOptions,
-        pageOptions: PageOptions
+        pageOptions: PuppeteerPageOptions
     ): Promise<Buffer | string | void> {
         await this.page.setViewport(imageOptions)
         await this.page.goto(url, pageOptions)

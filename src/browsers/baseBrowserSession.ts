@@ -1,6 +1,11 @@
 import { Browser } from 'puppeteer'
 
-import { ChromeBrowserOptions, ImageOptions, PageOptions, ResourceOptions } from '../../typings/browser-types'
+import {
+    ChromeBrowserOptions,
+    ImageOptions,
+    PuppeteerPageOptions,
+    ResourceOptions,
+} from '../../typings/browser-types'
 
 import { logs } from '../utils/loggers'
 import { serialize } from '../utils/serializers'
@@ -44,7 +49,7 @@ export default abstract class BaseBrowserSession {
         url: string,
         imageOptions: ImageOptions,
         resourceOptions: ResourceOptions,
-        pageOptions: PageOptions
+        pageOptions: PuppeteerPageOptions
     ): Promise<Buffer | string | void> {
         const page = await this.browser.newPage()
 

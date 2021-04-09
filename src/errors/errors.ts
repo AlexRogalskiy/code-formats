@@ -1,34 +1,45 @@
 import { hasProperty } from '../utils/commons'
 import { errorLogs } from '../utils/loggers'
 
+import { ErrorType, StatusCode } from '../../typings/enum-types'
+
 /**
- * ErrorType
- * @desc Type representing errors
+ * ErrorData
+ * @desc Type representing error data
  */
-export enum ErrorType {
-    general_error = 'GeneralError',
-    parser_error = 'ParserError',
-    validation_error = 'ValidationError',
-    request_error = 'RequestError',
-    response_error = 'ResponseError',
-    parameter_error = 'ParameterError',
-    type_error = 'TypeError',
-    value_error = 'ValueError',
+export type ErrorData = {
+    /**
+     * Error code
+     */
+    readonly code: StatusCode
+    /**
+     * Error description
+     */
+    readonly description: string
 }
 
 /**
- * ErrorType
- * @desc Type representing errors
+ * ErrorCode
+ * @desc Type representing error codes
  */
-export const ErrorCode: Record<ErrorType, number> = {
-    [ErrorType.general_error]: 500,
-    [ErrorType.parser_error]: 400,
-    [ErrorType.validation_error]: 400,
-    [ErrorType.request_error]: 400,
-    [ErrorType.response_error]: 500,
-    [ErrorType.parameter_error]: 400,
-    [ErrorType.type_error]: 400,
-    [ErrorType.value_error]: 400,
+export const ErrorCode: Record<ErrorType, ErrorData> = {
+    [ErrorType.general_error]: {
+        code: StatusCode.INTERNAL_SERVER_ERROR,
+        description: 'General Error',
+    },
+    [ErrorType.parser_error]: {
+        code: StatusCode.UNPROCESSABLE_ENTITY,
+        description: 'Parser Error',
+    },
+    [ErrorType.validation_error]: { code: StatusCode.BAD_REQUEST, description: 'Validation Error' },
+    [ErrorType.request_error]: { code: StatusCode.BAD_REQUEST, description: 'Request Error' },
+    [ErrorType.response_error]: {
+        code: StatusCode.INTERNAL_SERVER_ERROR,
+        description: 'Response Error',
+    },
+    [ErrorType.parameter_error]: { code: StatusCode.BAD_REQUEST, description: 'Parameter Error' },
+    [ErrorType.type_error]: { code: StatusCode.BAD_REQUEST, description: 'Type Error' },
+    [ErrorType.value_error]: { code: StatusCode.BAD_REQUEST, description: 'Value Error' },
 }
 
 /**
@@ -36,6 +47,15 @@ export const ErrorCode: Record<ErrorType, number> = {
  * @desc Class representing extendable error
  */
 export class ExtendableError extends Error {
+    /**
+     * Error data by provided {@link ErrorType}
+     */
+    readonly data: ErrorData = ErrorCode[this.type]
+    /**
+     * Error timestamp
+     */
+    readonly timestamp = new Date().getTime()
+
     /**
      * Extendable error constructor by input parameters
      * @param type initial input {@link ErrorType}
@@ -58,7 +78,7 @@ export class ExtendableError extends Error {
             writable: true,
         })
 
-        Object.defineProperty(this, 'code', {
+        Object.defineProperty(this, 'data', {
             configurable: true,
             enumerable: false,
             value: ErrorCode[type],
@@ -83,6 +103,13 @@ export class ExtendableError extends Error {
             value: new Error(message).stack,
             writable: true,
         })
+
+        if (typeof this.stack === 'string') {
+            const indexOfMessage = this.stack.indexOf(this.message) + this.message.length
+            const thisStackTrace = this.stack.slice(indexOfMessage).split('\n').reverse()
+
+            this.stack = `${this.stack.slice(0, indexOfMessage)}${thisStackTrace.reverse().join('\n')}`
+        }
     }
 }
 

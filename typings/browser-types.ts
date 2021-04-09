@@ -1,24 +1,24 @@
 import { BrowserOptions, ChromeArgOptions, LaunchOptions, PuppeteerLifeCycleEvent } from 'puppeteer-core'
 import { LaunchOptions as PlayLaunchOptions } from 'playwright-chromium'
 
-import { ImageContent, ImageEncoding } from '../src/constants/constants'
-
-import { Optional } from './standard-types'
+import { Keys, Optional, Undef } from './standard-types'
 import { ThemePattern } from './enum-types'
 import { RouteOptions } from './domain-types'
+
+import { IMAGE_CONTENT, IMAGE_ENCODING } from '../src/constants/constants'
 
 //--------------------------------------------------------------------------------------------------
 /**
  * ImageContentType
  * @desc Type representing supported image contents
  */
-export type ImageContentType = keyof typeof ImageContent
+export type ImageContentType = Keys<typeof IMAGE_CONTENT>
 
 /**
  * ImageEncodingType
  * @desc Type representing supported image encodings
  */
-export type ImageEncodingType = keyof typeof ImageEncoding
+export type ImageEncodingType = Keys<typeof IMAGE_ENCODING>
 
 //--------------------------------------------------------------------------------------------------
 /**
@@ -39,44 +39,45 @@ export type ChromeBrowserOptions = LaunchOptions & ChromeArgOptions & BrowserOpt
 //--------------------------------------------------------------------------------------------------
 /**
  * PageOptions
- * @desc Type representing page options
+ * @desc Type representing page configuration options
  */
-export type PageOptions = {
+export type PageOptions<T> = {
     /**
      * Page referer.
      */
-    readonly referer?: string | undefined
+    readonly referer?: Undef<string>
     /**
      * Page loading timeout.
      */
-    readonly timeout?: number | undefined
+    readonly timeout?: Undef<number>
     /**
-     * Page loading timeout by event.
-     * 'load' | 'domcontentloaded' | 'networkidle'
+     * Page loading timeout by DOM event.
      */
-    readonly waitUntil?: PuppeteerLifeCycleEvent | PuppeteerLifeCycleEvent[]
+    readonly waitUntil?: T
 }
 
 /**
- * PlayPageOptions
- * @desc Type representing play page options
+ * PuppeteerPageOptions
+ * @desc Type representing puppeteer page configuration options
  */
-export type PlayPageOptions = {
-    /**
-     * Page referer.
-     */
-    readonly referer?: string | undefined
-    /**
-     * Page loading timeout.
-     */
-    readonly timeout?: number | undefined
-    /**
-     * Page loading timeout by event.
-     * 'load' | 'domcontentloaded' | 'networkidle'
-     */
-    readonly waitUntil?: 'load' | 'domcontentloaded' | 'networkidle'
-}
+export type PuppeteerPageOptions = PageOptions<PuppeteerLifeCycleEvent | PuppeteerLifeCycleEvent[]>
+
+/**
+ * PlaywrightPageOptions
+ * @desc Type representing playwright page configuration options
+ */
+export type PlaywrightPageOptions = PageOptions<'load' | 'domcontentloaded' | 'networkidle'>
+
+/**
+ * GeneralPageOptions
+ * @desc Type representing general page configuration options
+ */
+export type GeneralPageOptions = PuppeteerPageOptions | PlaywrightPageOptions
 //--------------------------------------------------------------------------------------------------
+/**
+ * LocationOptions
+ * @desc Type representing location options
+ */
 export type LocationOptions = {
     /**
      * Generated image name.
@@ -88,6 +89,10 @@ export type LocationOptions = {
     readonly path: string
 }
 //--------------------------------------------------------------------------------------------------
+/**
+ * ImageOptions
+ * @desc Type representing image options
+ */
 export type ImageOptions = {
     /**
      * Page width in pixels.
@@ -103,6 +108,10 @@ export type ImageOptions = {
     readonly deviceScaleFactor?: number
 }
 //--------------------------------------------------------------------------------------------------
+/**
+ * ImageClipOptions
+ * @desc Type representing image clip options
+ */
 export type ImageClipOptions = {
     /**
      * page clip start X-position in pixels.
@@ -123,41 +132,45 @@ export type ImageClipOptions = {
 }
 
 //--------------------------------------------------------------------------------------------------
+/**
+ * ScreenshotOptions
+ * @desc Type representing screenshot options
+ */
 export type ScreenshotOptions = {
     /**
      * Image configuration options.
      */
-    readonly imageOptions: ImageOptions
+    readonly imageOptions?: Partial<ImageOptions>
     /**
      * Image clip configuration options.
      */
-    readonly imageClipOptions?: ImageClipOptions
+    readonly imageClipOptions?: Partial<ImageClipOptions>
     /**
      * Play browser launch options.
      */
-    readonly launchOptions: PlayLaunchOptions
+    readonly playLaunchOptions?: Partial<PlayLaunchOptions>
     /**
      * Page configuration options.
      */
-    readonly pageOptions?: PageOptions | PlayPageOptions
+    readonly pageOptions?: Partial<GeneralPageOptions>
     /**
      * Browser configuration options.
      */
-    readonly browserOptions: ChromeBrowserOptions
+    readonly browserOptions?: Partial<ChromeBrowserOptions>
     /**
      * Image location options.
      */
-    readonly locationOptions: Partial<LocationOptions>
+    readonly locationOptions?: Partial<LocationOptions>
     /**
      * Image resource options.
      */
-    readonly resourceOptions: Partial<ResourceOptions>
+    readonly resourceOptions?: Partial<ResourceOptions>
 }
 
 //--------------------------------------------------------------------------------------------------
 /**
- * ResourceOptions
- * @desc Type representing resource options
+ * ThemeOptions
+ * @desc Type representing theme options
  */
 export type ThemeOptions = {
     /**
@@ -199,10 +212,10 @@ export type ResourceOptions = {
 
 //--------------------------------------------------------------------------------------------------
 /**
- * ParsedRequest
- * @desc Type representing parsed request
+ * RequestOptions
+ * @desc Type representing request options
  */
-export type ParsedRequest = {
+export type RequestOptions = {
     /**
      * Parsed image url.
      */
@@ -218,6 +231,6 @@ export type ParsedRequest = {
     /**
      * Parsed page options.
      */
-    readonly pageOptions?: PageOptions
+    readonly pageOptions?: GeneralPageOptions
 }
 //--------------------------------------------------------------------------------------------------

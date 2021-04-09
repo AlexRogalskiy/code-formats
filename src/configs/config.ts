@@ -1,57 +1,31 @@
-import { Profile } from '../../typings/enum-types'
+import { ProfilePattern } from '../../typings/enum-types'
 import { ProfileOptions } from '../../typings/domain-types'
 
-import {
-    BROWSER_OPTIONS,
-    IMAGE_OPTIONS,
-    LOCATION_OPTIONS,
-    OUTPUT_OPTIONS,
-    PAGE_OPTIONS,
-    RESOURCE_OPTIONS,
-    ROUTE_OPTIONS,
-} from '../constants/constants'
+import { OUTPUT_OPTIONS, ROUTE_OPTIONS, SCREENSHOTS_OPTIONS } from '../constants/constants'
 
 /**
- * ConfigRecord
- * @desc Type representing profile config options
+ * ProfileConfigOptions
+ * @desc Type representing profile configuration options
  */
-export type ConfigRecord = Record<Profile, ProfileOptions>
+export type ProfileConfigOptions = Record<ProfilePattern, ProfileOptions>
 
 /**
  * Configuration options
  */
-export const CONFIG: Readonly<ConfigRecord> = {
+export const CONFIG: Readonly<ProfileConfigOptions> = {
     dev: {
         routeOptions: ROUTE_OPTIONS,
-        screenshotOptions: {
-            browserOptions: BROWSER_OPTIONS,
-            locationOptions: LOCATION_OPTIONS,
-            resourceOptions: RESOURCE_OPTIONS,
-            imageOptions: IMAGE_OPTIONS,
-            pageOptions: PAGE_OPTIONS,
-        },
+        screenshotOptions: SCREENSHOTS_OPTIONS,
         outputOptions: OUTPUT_OPTIONS,
     },
     prod: {
         routeOptions: ROUTE_OPTIONS,
-        screenshotOptions: {
-            browserOptions: BROWSER_OPTIONS,
-            locationOptions: LOCATION_OPTIONS,
-            resourceOptions: RESOURCE_OPTIONS,
-            imageOptions: IMAGE_OPTIONS,
-            pageOptions: PAGE_OPTIONS,
-        },
+        screenshotOptions: SCREENSHOTS_OPTIONS,
         outputOptions: OUTPUT_OPTIONS,
     },
     test: {
         routeOptions: ROUTE_OPTIONS,
-        screenshotOptions: {
-            browserOptions: BROWSER_OPTIONS,
-            locationOptions: LOCATION_OPTIONS,
-            resourceOptions: RESOURCE_OPTIONS,
-            imageOptions: IMAGE_OPTIONS,
-            pageOptions: PAGE_OPTIONS,
-        },
+        screenshotOptions: SCREENSHOTS_OPTIONS,
         outputOptions: OUTPUT_OPTIONS,
     },
 }

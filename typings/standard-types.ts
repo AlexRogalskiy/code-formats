@@ -5,6 +5,18 @@
 export type Optional<T> = T | null | undefined
 //--------------------------------------------------------------------------------------------------
 /**
+ * Undef
+ * @desc Type representing [`Undef`] in TypeScript: `T | undefined`
+ */
+export type Undef<T> = T | undefined
+//--------------------------------------------------------------------------------------------------
+/**
+ * Keys
+ * @desc Type representing [`Keys`] in TypeScript: `T`
+ */
+export type Keys<T> = keyof T
+//--------------------------------------------------------------------------------------------------
+/**
  * Processor
  * @desc Type representing processor function type in TypeScript
  * @example

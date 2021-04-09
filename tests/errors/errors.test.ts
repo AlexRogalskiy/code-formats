@@ -1,6 +1,8 @@
 import { describe } from '@jest/globals'
 
-import { ErrorType, ExtendableError } from '../../src/errors/errors'
+import { ErrorType } from '../../typings/enum-types'
+
+import { ExtendableError } from '../../src/errors/errors'
 
 export namespace Errors_Test {
     class TestError extends ExtendableError {

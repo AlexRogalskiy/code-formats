@@ -2,41 +2,45 @@ import { NowResponse } from '@vercel/node'
 
 import fetch from 'isomorphic-unfetch'
 
-import { GeneralError, ResponseError } from '../errors/errors'
+import { Headers } from '../../typings/domain-types'
+
+import { ExtendableError, ResponseError } from '../errors/errors'
 import { errorLogs } from './loggers'
-import { isBlankString } from './validators'
+import { isBlankString, isFunction } from './validators'
 
 import { RESPONSE_HEADERS } from '../constants/constants'
 
 export const getApiUrl = (baseUrl: string, query: string): string => `${baseUrl}?${query}`
 
-export const sendResponse = (res: NowResponse, error: GeneralError): NowResponse => {
-    return res.status(error['code']).send({
-        type: error.type,
-        name: error.name,
-        message: error.message,
+export const sendResponse = (
+    res: NowResponse,
+    { data, type, message, timestamp }: ExtendableError
+): NowResponse => {
+    return res.status(data.code).send({
+        type,
+        code: data.code,
+        message,
+        description: data.description,
+        timestamp,
     })
 }
 
-export const setHeaders = <T>(
-    res: T,
-    values: Record<string, number | string | string[]> = RESPONSE_HEADERS
-): void => {
-    for (const [key, value] of Object.entries(values)) {
-        setHeader(key, value, res)
+export const setHeaders = <T>(res: T, headers: Headers = RESPONSE_HEADERS): void => {
+    for (const [key, value] of Object.entries(headers)) {
+        setHeader(res, key, value)
     }
 }
 
-export const setHeader = <T>(key: string, value: number | string | string[], headers: T): T => {
-    if (Array.isArray(headers)) {
-        headers.push([key, value])
-    } else if (Object.prototype.hasOwnProperty.call(headers, 'setHeader')) {
-        headers['setHeader'](key, value)
+export const setHeader = <T>(res: T, key: string, value: number | string | string[]): T => {
+    if (Array.isArray(res)) {
+        res.push([key, value])
+    } else if (isFunction(res['setHeader'])) {
+        res['setHeader'](key, value)
     } else {
-        headers[key] = value
+        res[key] = value
     }
 
-    return headers
+    return res
 }
 
 export const isResponseOk = (response: Response): boolean => {

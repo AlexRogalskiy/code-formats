@@ -1,21 +1,28 @@
 import boxen from 'boxen'
 
-import { ChromeArgOptions, LaunchOptions } from 'puppeteer-core'
+import { LaunchOptions as PlayLaunchOptions } from 'playwright-chromium'
 
 import { Headers, RouteOptions, ThemeFormatOptions } from '../../typings/domain-types'
-import { ImageOptions, LocationOptions, PageOptions, ResourceOptions } from '../../typings/browser-types'
+import {
+    ChromeBrowserOptions,
+    ImageOptions,
+    LocationOptions,
+    PuppeteerPageOptions,
+    ResourceOptions,
+    ScreenshotOptions,
+} from '../../typings/browser-types'
 
-import { toEnum } from '../utils/commons'
+import { strToEnum } from '../utils/commons'
 
 /**
  * Image supported content types
  */
-export const ImageContent = toEnum(['jpeg', 'png'])
+export const IMAGE_CONTENT = strToEnum(['jpeg', 'png'])
 
 /**
  * Image supported encoding types
  */
-export const ImageEncoding = toEnum(['base64', 'binary'])
+export const IMAGE_ENCODING = strToEnum(['base64', 'binary'])
 
 /**
  * Output configuration options
@@ -28,16 +35,16 @@ export const OUTPUT_OPTIONS: Readonly<boxen.Options> = {
 }
 
 /**
- * Launch configuration options
+ * Play launch configuration options
  */
-export const LAUNCH_OPTIONS: Readonly<LaunchOptions> = {
-    // empty
+export const PLAY_LAUNCH_OPTIONS: Readonly<PlayLaunchOptions> = {
+    chromiumSandbox: false,
 }
 
 /**
  * Page configuration options
  */
-export const PAGE_OPTIONS: Readonly<PageOptions> = {
+export const PAGE_OPTIONS: Readonly<PuppeteerPageOptions> = {
     waitUntil: 'load',
 }
 
@@ -77,7 +84,7 @@ export const RESOURCE_OPTIONS: Readonly<ResourceOptions> = {
 /**
  * Browser configuration options
  */
-export const BROWSER_OPTIONS: Readonly<LaunchOptions & ChromeArgOptions> = {
+export const BROWSER_OPTIONS: Readonly<ChromeBrowserOptions> = {
     headless: true,
     devtools: false,
     args: [
@@ -93,7 +100,7 @@ export const BROWSER_OPTIONS: Readonly<LaunchOptions & ChromeArgOptions> = {
 }
 
 /**
- * Query format configuration mappings
+ * Query format mappings
  */
 export const QUERY_FORMAT_MAPPINGS: Readonly<ThemeFormatOptions> = {
     backgroundColor: 'bg',
@@ -119,7 +126,7 @@ export const QUERY_FORMAT_MAPPINGS: Readonly<ThemeFormatOptions> = {
 /**
  * Response headers
  */
-export const RESPONSE_HEADERS: Headers = {
+export const RESPONSE_HEADERS: Readonly<Headers> = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
     'Cache-Control': 'no-cache,max-age=0,no-store,s-maxage=0,proxy-revalidate',
@@ -127,4 +134,16 @@ export const RESPONSE_HEADERS: Headers = {
     'Expires': '-1',
     'Content-type': 'application/json',
     'X-Powered-By': 'Vercel',
+}
+
+/**
+ * Screenshot configuration options
+ */
+export const SCREENSHOTS_OPTIONS: Readonly<ScreenshotOptions> = {
+    playLaunchOptions: PLAY_LAUNCH_OPTIONS,
+    browserOptions: BROWSER_OPTIONS,
+    locationOptions: LOCATION_OPTIONS,
+    resourceOptions: RESOURCE_OPTIONS,
+    imageOptions: IMAGE_OPTIONS,
+    pageOptions: PAGE_OPTIONS,
 }

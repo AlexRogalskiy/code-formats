@@ -1,21 +1,18 @@
-import { Profile } from '../../typings/enum-types'
+import { ProfilePattern } from '../../typings/enum-types'
 import { Optional } from '../../typings/standard-types'
 import { ProfileOptions } from '../../typings/domain-types'
 
 import { CONFIG } from '../configs/config'
 
-export const getProfileByEnv = (env: Optional<string> = process.env.NODE_ENV): Profile => {
-    return env && Profile[env] ? Profile[env] : Profile.dev
-}
+import { isNotUndefined } from './validators'
 
-export const getConfigByEnv = (env: Optional<string> = process.env.NODE_ENV): ProfileOptions => {
-    return CONFIG[getProfileByEnv(env)]
-}
+export const getProfileByEnv = (env: Optional<string> = process.env.NODE_ENV): ProfilePattern =>
+    env && ProfilePattern[env] ? ProfilePattern[env] : ProfilePattern.dev
 
-export const isProd = process.env.AWS_LAMBDA_FUNCTION_VERSION || Profile.prod === getProfileByEnv()
+export const getConfigByEnv = (env: Optional<string> = process.env.NODE_ENV): ProfileOptions =>
+    CONFIG[getProfileByEnv(env)]
 
-const getConfig = (): ProfileOptions => {
-    return isProd ? CONFIG[Profile.prod] : getConfigByEnv()
-}
+export const isProd =
+    isNotUndefined(process.env.AWS_LAMBDA_FUNCTION_VERSION) || ProfilePattern.prod === getProfileByEnv()
 
-export const profile = getConfig()
+export const profile = isProd ? CONFIG[ProfilePattern.prod] : getConfigByEnv()

@@ -71,8 +71,10 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="typings_standard_types.html#biconsumer" class="tsd-kind-icon">Bi<wbr>Consumer</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="typings_standard_types.html#keys" class="tsd-kind-icon">Keys</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="typings_standard_types.html#optional" class="tsd-kind-icon">Optional</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="typings_standard_types.html#processor" class="tsd-kind-icon">Processor</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="typings_standard_types.html#undef" class="tsd-kind-icon">Undef</a></li>
 							</ul>
 						</section>
 					</div>
@@ -86,7 +88,7 @@
 					<div class="tsd-signature tsd-kind-icon">Bi<wbr>Consumer&lt;T, V&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>v1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, v2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">V</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/typings/standard-types.ts#L21">typings/standard-types.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/typings/standard-types.ts#L33">typings/standard-types.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -137,12 +139,38 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="keys" class="tsd-anchor"></a>
+					<h3>Keys</h3>
+					<div class="tsd-signature tsd-kind-icon">Keys&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">T</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/typings/standard-types.ts#L17">typings/standard-types.ts:17</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Keys</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>desc</dt>
+							<dd><p>Type representing [<code>Keys</code>] in TypeScript: <code>T</code></p>
+							</dd>
+						</dl>
+					</div>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>T</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 					<a name="optional" class="tsd-anchor"></a>
 					<h3>Optional</h3>
 					<div class="tsd-signature tsd-kind-icon">Optional&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/typings/standard-types.ts#L5">typings/standard-types.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/typings/standard-types.ts#L5">typings/standard-types.ts:5</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -168,7 +196,7 @@
 					<div class="tsd-signature tsd-kind-icon">Processor&lt;T, V&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">V</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/typings/standard-types.ts#L13">typings/standard-types.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/typings/standard-types.ts#L25">typings/standard-types.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -215,6 +243,32 @@
 						</ul>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="undef" class="tsd-anchor"></a>
+					<h3>Undef</h3>
+					<div class="tsd-signature tsd-kind-icon">Undef&lt;T&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/typings/standard-types.ts#L11">typings/standard-types.ts:11</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Undef</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>desc</dt>
+							<dd><p>Type representing [<code>Undef</code>] in TypeScript: <code>T | undefined</code></p>
+							</dd>
+						</dl>
+					</div>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>T</h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -234,10 +288,16 @@
 						<a href="typings_standard_types.html#biconsumer" class="tsd-kind-icon">Bi<wbr>Consumer</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="typings_standard_types.html#keys" class="tsd-kind-icon">Keys</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="typings_standard_types.html#optional" class="tsd-kind-icon">Optional</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
 						<a href="typings_standard_types.html#processor" class="tsd-kind-icon">Processor</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="typings_standard_types.html#undef" class="tsd-kind-icon">Undef</a>
 					</li>
 				</ul>
 			</nav>
@@ -257,9 +317,6 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>

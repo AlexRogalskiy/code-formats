@@ -2,7 +2,7 @@ import { Browser, Page } from 'playwright-core'
 import { chromium, LaunchOptions } from 'playwright-chromium'
 import { BrowserContext } from 'playwright-core/types/types'
 
-import { ImageOptions, PlayPageOptions, ResourceOptions } from '../../typings/browser-types'
+import { ImageOptions, PlaywrightPageOptions, ResourceOptions } from '../../typings/browser-types'
 
 import { mergeProps } from '../utils/commons'
 import { profile } from '../utils/profiles'
@@ -46,6 +46,7 @@ export default class PlaywrightBrowserSession {
      */
     async newContextPage(): Promise<Page> {
         const context = await this.browser.newContext()
+
         return await context.newPage()
     }
 
@@ -60,7 +61,7 @@ export default class PlaywrightBrowserSession {
         url: string,
         imageOptions: ImageOptions,
         resourceOptions?: ResourceOptions,
-        pageOptions?: PlayPageOptions
+        pageOptions?: PlaywrightPageOptions
     ): Promise<Buffer | string | void> {
         await this.page.setViewportSize(imageOptions)
         await this.page.goto(url, pageOptions)

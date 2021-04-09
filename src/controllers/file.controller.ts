@@ -7,9 +7,9 @@ import * as templateService from '../services/template.service'
 
 import { sendResponse, setHeaders } from '../utils/requests'
 import { serialize } from '../utils/serializers'
+import { single } from '../utils/commons'
 
 import { requestError, responseError } from '../errors/errors'
-import { single } from '../utils/commons'
 
 export async function fileController(req: NowRequest, res: NowResponse): Promise<void> {
     const form = new IncomingForm()

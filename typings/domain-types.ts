@@ -3,7 +3,7 @@ import boxen from 'boxen'
 import { ScreenshotOptions } from './browser-types'
 import { ThemePattern } from './enum-types'
 import { Optional } from './standard-types'
-//--------------------------------------------------------------------------------------------------
+
 /**
  * Headers
  * @desc Type representing headers
@@ -15,18 +15,18 @@ export type Headers = Record<string, number | string | string[]>
  * RouteOptions
  * @desc Type representing route options
  */
-export interface RouteOptions {
+export type RouteOptions = {
     /**
      * Route base url.
      */
     readonly url: string
 }
-
+//--------------------------------------------------------------------------------------------------
 /**
  * ThemeOptions
  * @desc Type representing theme options
  */
-export interface ThemeOptions {
+export type ThemeOptions = {
     /**
      * Theme pattern.
      */
@@ -36,18 +36,18 @@ export interface ThemeOptions {
      */
     readonly format?: FormatOptions
 }
-
+//--------------------------------------------------------------------------------------------------
 /**
  * PayloadOptions
  * @desc Type representing payload options
  */
-export interface PayloadOptions {
+export type PayloadOptions = {
     /**
      * Payload data
      */
     readonly data: string
 }
-
+//--------------------------------------------------------------------------------------------------
 /**
  * QueryOptions
  * @desc Type representing query options

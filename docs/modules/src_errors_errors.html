@@ -68,12 +68,6 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-module"><a href="../enums/src_errors_errors.errortype.html" class="tsd-kind-icon">Error<wbr>Type</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/src_errors_errors.extendableerror.html" class="tsd-kind-icon">Extendable<wbr>Error</a></li>
@@ -89,6 +83,7 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="src_errors_errors.html#errordata" class="tsd-kind-icon">Error<wbr>Data</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="src_errors_errors.html#extendableerrorconstructor" class="tsd-kind-icon">Extendable<wbr>Error<wbr>Constructor</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="src_errors_errors.html#generalerrorconstructor" class="tsd-kind-icon">General<wbr>Error<wbr>Constructor</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="src_errors_errors.html#requesterrorconstructor" class="tsd-kind-icon">Request<wbr>Error<wbr>Constructor</a></li>
@@ -121,12 +116,53 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="errordata" class="tsd-anchor"></a>
+					<h3>Error<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">Error<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>code<span class="tsd-signature-symbol">: </span><a href="../enums/typings_enum_types.statuscode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">StatusCode</a><span class="tsd-signature-symbol">; </span>description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L10">src/errors/errors.ts:10</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ErrorData</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>desc</dt>
+							<dd><p>Type representing error data</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> code<span class="tsd-signature-symbol">: </span><a href="../enums/typings_enum_types.statuscode.html" class="tsd-signature-type" data-tsd-kind="Enumeration">StatusCode</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Error code</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> description<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Error description</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="extendableerrorconstructor" class="tsd-anchor"></a>
 					<h3>Extendable<wbr>Error<wbr>Constructor</h3>
 					<div class="tsd-signature tsd-kind-icon">Extendable<wbr>Error<wbr>Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><a href="../classes/src_errors_errors.extendableerror.html" class="tsd-signature-type" data-tsd-kind="Class">ExtendableError</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L213">src/errors/errors.ts:213</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L240">src/errors/errors.ts:240</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -146,7 +182,7 @@
 					<div class="tsd-signature tsd-kind-icon">General<wbr>Error<wbr>Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><a href="../classes/src_errors_errors.generalerror.html" class="tsd-signature-type" data-tsd-kind="Class">GeneralError</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L214">src/errors/errors.ts:214</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L241">src/errors/errors.ts:241</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -156,7 +192,7 @@
 					<div class="tsd-signature tsd-kind-icon">Request<wbr>Error<wbr>Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><a href="../classes/src_errors_errors.requesterror.html" class="tsd-signature-type" data-tsd-kind="Class">RequestError</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L217">src/errors/errors.ts:217</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L244">src/errors/errors.ts:244</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -166,7 +202,7 @@
 					<div class="tsd-signature tsd-kind-icon">Response<wbr>Error<wbr>Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><a href="../classes/src_errors_errors.responseerror.html" class="tsd-signature-type" data-tsd-kind="Class">ResponseError</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L218">src/errors/errors.ts:218</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L245">src/errors/errors.ts:245</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Error<wbr>Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><a href="../classes/src_errors_errors.typeerror.html" class="tsd-signature-type" data-tsd-kind="Class">TypeError</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L215">src/errors/errors.ts:215</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L242">src/errors/errors.ts:242</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -186,7 +222,7 @@
 					<div class="tsd-signature tsd-kind-icon">Unsupported<wbr>Parameter<wbr>Error<wbr>Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><a href="../classes/src_errors_errors.unsupportedparametererror.html" class="tsd-signature-type" data-tsd-kind="Class">UnsupportedParameterError</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L219">src/errors/errors.ts:219</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L246">src/errors/errors.ts:246</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -196,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">Validation<wbr>Error<wbr>Constructor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><a href="../classes/src_errors_errors.validationerror.html" class="tsd-signature-type" data-tsd-kind="Class">ValidationError</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L216">src/errors/errors.ts:216</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L243">src/errors/errors.ts:243</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -206,19 +242,19 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="errorcode" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> Error<wbr>Code</h3>
-					<div class="tsd-signature tsd-kind-icon">Error<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/src_errors_errors.errortype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">ErrorType</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">Error<wbr>Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/typings_enum_types.errortype.html" class="tsd-signature-type" data-tsd-kind="Enumeration">ErrorType</a><span class="tsd-signature-symbol">, </span><a href="src_errors_errors.html#errordata" class="tsd-signature-type" data-tsd-kind="Type alias">ErrorData</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L23">src/errors/errors.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L25">src/errors/errors.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>ErrorType</p>
+							<p>ErrorCode</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>desc</dt>
-							<dd><p>Type representing errors</p>
+							<dd><p>Type representing error codes</p>
 							</dd>
 						</dl>
 					</div>
@@ -236,7 +272,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L237">src/errors/errors.ts:237</a></li>
+									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L264">src/errors/errors.ts:264</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -262,7 +298,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L233">src/errors/errors.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L260">src/errors/errors.ts:260</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -288,7 +324,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L225">src/errors/errors.ts:225</a></li>
+									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L252">src/errors/errors.ts:252</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -314,7 +350,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L241">src/errors/errors.ts:241</a></li>
+									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L268">src/errors/errors.ts:268</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -340,7 +376,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L229">src/errors/errors.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L256">src/errors/errors.ts:256</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -366,7 +402,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/0ef1311/src/errors/errors.ts#L221">src/errors/errors.ts:221</a></li>
+									<li>Defined in <a href="https://github.com/AlexRogalskiy/code-formats/blob/1bed605/src/errors/errors.ts#L248">src/errors/errors.ts:248</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -397,9 +433,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/src_errors_errors.errortype.html" class="tsd-kind-icon">Error<wbr>Type</a>
-					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-module">
 						<a href="../classes/src_errors_errors.extendableerror.html" class="tsd-kind-icon">Extendable<wbr>Error</a>
 					</li>
@@ -423,6 +456,9 @@
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-module">
 						<a href="../classes/src_errors_errors.valueerror.html" class="tsd-kind-icon">Value<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="src_errors_errors.html#errordata" class="tsd-kind-icon">Error<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="src_errors_errors.html#extendableerrorconstructor" class="tsd-kind-icon">Extendable<wbr>Error<wbr>Constructor</a>
@@ -484,9 +520,6 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>

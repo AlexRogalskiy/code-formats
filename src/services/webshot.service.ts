@@ -1,19 +1,25 @@
 import { stringify } from 'querystring'
 
 import { Optional } from '../../typings/standard-types'
-import { ParsedRequest } from '../../typings/browser-types'
+import {
+    GeneralPageOptions,
+    ImageOptions,
+    RequestOptions,
+    ResourceOptions,
+} from '../../typings/browser-types'
 import { CarbonFormatOptions, FormatOptions, QueryOptions } from '../../typings/domain-types'
 
 import * as screenshotClient from '../clients/screenshot.client'
 
 import { QUERY_FORMAT_MAPPINGS } from '../constants/constants'
 
-import { boxenLogs } from '../utils/loggers'
+import { getTheme } from '../themes/themes'
+
 import { mergeProps } from '../utils/commons'
 import { serialize } from '../utils/serializers'
 import { getApiUrl } from '../utils/requests'
-
-import { getTheme } from '../themes/themes'
+import { boxenLogs } from '../utils/loggers'
+import { profile } from '../utils/profiles'
 
 const buildQueryParams = (options: Partial<FormatOptions>): Partial<CarbonFormatOptions> => {
     return Object.keys(options).reduce((acc, curr) => {
@@ -65,8 +71,17 @@ export function createTargetUrl(query: QueryOptions): string {
     return getApiUrl(query.url, queryString)
 }
 
-export async function getScreenshot(parsedRequest: ParsedRequest): Promise<Buffer | string | void> {
-    boxenLogs(`Creating screenshot by request params=${serialize(parsedRequest)}`)
+export async function getScreenshot(request: RequestOptions): Promise<Buffer | string | void> {
+    boxenLogs(`Creating screenshot by request params=${serialize(request)}`)
 
-    return await screenshotClient.screenshotRenderer(parsedRequest)
+    const { imageOptions, resourceOptions, pageOptions } = profile.screenshotOptions
+
+    const requestData: Required<RequestOptions> = {
+        routeOptions: request.routeOptions,
+        imageOptions: mergeProps<ImageOptions>(imageOptions, request.imageOptions),
+        resourceOptions: mergeProps<ResourceOptions>(resourceOptions, request.resourceOptions),
+        pageOptions: mergeProps<GeneralPageOptions>(pageOptions, request.pageOptions),
+    }
+
+    return await screenshotClient.screenshotRenderer(requestData)
 }
