@@ -33,6 +33,7 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/AlexRogalskiy/code-formats.svg?logo=lgtm\&logoWidth=18)](https://lgtm.com/projects/g/AlexRogalskiy/code-formats/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/AlexRogalskiy/code-formats.svg?logo=lgtm\&logoWidth=18)](https://lgtm.com/projects/g/AlexRogalskiy/code-formats/context:javascript)
 
+[![codebeat badge](https://codebeat.co/badges/5b87bef8-d99f-4d4a-986a-7d5eb867063e)](https://codebeat.co/projects/github-com-alexrogalskiy-code-formats-master)
 [![Renovatebot](https://badgen.net/badge/renovate/enabled/green?cache=300)](https://renovatebot.com/)
 [![Dependabot](https://img.shields.io/badge/dependabot-enabled-1f8ceb.svg?style=flat-square)](https://dependabot.com/)
 [![NewReleases](https://newreleases.io/badge.svg)](https://newreleases.io/github/AlexRogalskiy/code-formats)
