@@ -60,7 +60,7 @@
         "@semantic-release/release-notes-generator": "^9.0.1",
         "@types/form-data": "^2.5.0",
         "@types/formidable": "^1.0.31",
-        "@types/jest": "^26.0.20",
+        "@types/jest": "27.0.2",
         "@types/lodash.mergewith": "^4.6.6",
         "@types/node-fetch": "^2.5.10",
         "@types/prettier": "^2.1.5",
