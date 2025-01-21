@@ -46,6 +46,7 @@
 [![GitHub Super-Linter](https://github.com/AlexRogalskiy/code-formats/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 [![BCH compliance](https://bettercodehub.com/edge/badge/AlexRogalskiy/code-formats?branch=master)](https://bettercodehub.com/)
 
+[![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-blue?style=flat-square&logo=codeanywhere)](https://app.codeanywhere.com/#https://github.com/AlexRogalskiy/code-formats)
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/AlexRogalskiy/code-formats)
 [![Chat](https://img.shields.io/badge/chat-discussions-success.svg)](https://github.com/AlexRogalskiy/code-formats/discussions)
 [![Open questions](https://img.shields.io/badge/Open-questions-blue.svg?style=flat-curved)](https://github.com/AlexRogalskiy/code-formats/labels/question)
@@ -255,7 +256,10 @@ See also the list of [contributors][contributors] who participated in this proje
 
 ***Styled Code Formats*** Team would like inform that JetBrains is helping by provided IDE to develop the application. Thanks to its support program for an Open Source projects!
 
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/AlexRogalskiy/code-formats)
+
 [![Edit with Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/AlexRogalskiy/code-formats)
+
 
 ***Styled Code Formats*** has experimental support for Gitpod, a pre-configured development environment that runs in your browser. To use Gitpod, click the button below and sign in with GitHub. Gitpod also offers a browser add-on, though it is not required.
 
