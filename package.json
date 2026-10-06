@@ -70,7 +70,7 @@
         "boxen": "^5.0.0",
         "conventional-changelog-cli": "^2.0.0",
         "coveralls": "^3.0.0",
-        "dateformat": "^4.5.1",
+        "dateformat": "^5.0.0",
         "del-cli": "^3.0.1",
         "eslint": "^8.31.0",
         "eslint-config-prettier": "^8.5.0",
