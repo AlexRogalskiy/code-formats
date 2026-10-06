@@ -47,7 +47,7 @@
         "chrome-aws-lambda": "^7.0.0",
         "env-cmd": "^10.1.0",
         "formidable": "^1.2.2",
-        "isomorphic-unfetch": "^3.1.0",
+        "isomorphic-unfetch": "^4.0.0",
         "jsdom": "^16.4.0",
         "lodash": "^4.17.20",
         "playwright-chromium": "^1.8.1",
